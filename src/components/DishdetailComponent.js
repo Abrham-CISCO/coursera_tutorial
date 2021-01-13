@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Loading } from './LoadingComponent';
 import {Card, Breadcrumb, BreadcrumbItem, CardImg, CardText, CardTitle,
    Button, Modal, ModalHeader, ModalBody,  Form, FormGroup, Input, Label, Row, Col } from 'reactstrap'
    import { control, LocalForm, Errors, Control } from 'react-redux-form';
@@ -6,6 +7,7 @@ import {Card, Breadcrumb, BreadcrumbItem, CardImg, CardText, CardTitle,
 import FormFeedback from 'reactstrap/lib/FormFeedback';
 const maxNameLength = (len) => (val) => !(val) || (val.length <= len)
 const minNameLength = (len) => (val) => (val) && (val.length > len)
+
 
     // componentDidMount(){
     //     console.log('DishDetail Component componentDidMount invoked')
@@ -127,7 +129,6 @@ const minNameLength = (len) => (val) => (val) && (val.length > len)
 
     RenderDish(props)
     {
-        console.log("Dish",props)
         if(props)
         {
             return (
@@ -151,8 +152,27 @@ const minNameLength = (len) => (val) => (val) && (val.length > len)
         }
     }
 
-    render()
+    Finalrender(props)
     {
+        if(props.isLoading) {
+            return(
+                <div className="container">
+                    <div className="row">
+                        <Loading />
+                    </div>
+                </div>
+            );
+        }
+        else if (props.errMess) {
+            return(
+                <div className="container">
+                    <div className="row">
+                        <h4>{props.errMess}</h4>
+                    </div>
+                </div>
+            );          
+        }
+        else 
         return(
             <div className="container">
                 <Breadcrumb>
@@ -162,7 +182,8 @@ const minNameLength = (len) => (val) => (val) && (val.length > len)
                         </Link>
                     </BreadcrumbItem>
                     <BreadcrumbItem active>
-                        {this.props.dish.name}
+                        {/* {this.props.dish.name} */}
+                        {console.log("this.props.dish", this.props.dish)}
                     </BreadcrumbItem>
                 </Breadcrumb>
                     <div className="col-12">
@@ -182,6 +203,10 @@ const minNameLength = (len) => (val) => (val) && (val.length > len)
                 </div>
             </div>
         )
+    }
+    render()
+    {
+       return(this.Finalrender(this.state.props))
     }
  }
 
