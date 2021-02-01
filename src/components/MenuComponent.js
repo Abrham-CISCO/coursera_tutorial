@@ -2,7 +2,8 @@ import React from 'react';
 import { Card, Breadcrumb, BreadcrumbItem, CardImg, CardImgOverlay,CardTitle} from 'reactstrap';
 import { Loading } from "./LoadingComponent";
 import { Link } from 'react-router-dom';
-    // componentDidMount(){
+import { baseUrl } from '../shared/baseUrl';
+// componentDidMount(){
     //     console.log('Menu Component componentDidMount invoked')
     // }
 
@@ -16,7 +17,7 @@ import { Link } from 'react-router-dom';
         return(
             <Card>
                 <Link to={`/menu/${dish.id}`}>
-                    <CardImg width="100%" src={dish.image} alt={dish.name} />
+                    <CardImg width="100%" src={baseUrl + dish.image} alt={dish.name} />
                     <CardImgOverlay>
                         <CardTitle>
                             {dish.name}

@@ -5,6 +5,8 @@ import {Card, Breadcrumb, BreadcrumbItem, CardImg, CardText, CardTitle,
    import { control, LocalForm, Errors, Control } from 'react-redux-form';
    import {Link} from 'react-router-dom';
 import FormFeedback from 'reactstrap/lib/FormFeedback';
+import { baseUrl } from '../shared/baseUrl';
+
 const maxNameLength = (len) => (val) => !(val) || (val.length <= len)
 const minNameLength = (len) => (val) => (val) && (val.length > len)
 
@@ -133,7 +135,7 @@ const minNameLength = (len) => (val) => (val) && (val.length > len)
         {
             return (
                     <Card>
-                            <CardImg width="100%" src={props.image} alt={props.name} />
+                            <CardImg width="100%" src={baseUrl + props.image} alt={props.name} />
                             <CardTitle>
                                <h5>{props.name}</h5>
                             </CardTitle>

@@ -5,6 +5,7 @@ import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse,
     Form, FormGroup, Input, Label } from 'reactstrap';
 
 import { NavLink } from 'react-router-dom';
+import { baseUrl } from '../shared/baseUrl';
 
 class Header extends Component{
 
@@ -45,7 +46,7 @@ class Header extends Component{
                     <div className = "container">
                     <NavbarToggler onClick={this.togggleNav} />
                     <NavbarBrand href="/" className = "mr-auto">
-                        <img src="assets/images/logo.png" height="30" witdh = "41" alt = "Ristronte Con Fusion" />
+                        <img src={baseUrl + "/images/logo.png"} height="30" witdh = "41" alt = "Ristronte Con Fusion" />
                     </NavbarBrand>
                     <Collapse isOpen= {this.state.isNavOpen} navbar>
                         <Nav navbar>
