@@ -43,7 +43,7 @@ const minNameLength = (len) => (val) => (val) && (val.length > len)
             });        
         }
         handleSubmit(values){
-            this.state.props.addComment(this.state.props.dish.id, values.rating, values.yourname, values.comment);
+            this.state.props.postComment(this.state.props.dish.id, values.rating, values.yourname, values.comment);
         } 
         AddComments(){
             return(
