@@ -6,7 +6,7 @@ import {Card, Breadcrumb, BreadcrumbItem, CardImg, CardText, CardTitle,
    import {Link} from 'react-router-dom';
 import FormFeedback from 'reactstrap/lib/FormFeedback';
 import { baseUrl } from '../shared/baseUrl';
-
+import {FadeTransform, Fade, Stagger} from 'react-animation-component
 const maxNameLength = (len) => (val) => !(val) || (val.length <= len)
 const minNameLength = (len) => (val) => (val) && (val.length > len)
 
@@ -115,10 +115,15 @@ const minNameLength = (len) => (val) => (val) && (val.length > len)
         {
            var comments = com.map((comment)=>{
                 return(
-                    <div key={comment.id}>
-                    <p>{comment.comment}</p>
-                    <p>--{comment.author}, {new Intl.DateTimeFormat('en-US', {year:'numeric', month:'short', day:'2-digit'}).format(new Date(Date.parse(comment.date)))}</p>
-                    </div>)
+                   <Stagger in>
+                       <div key={comment.id}>
+                        <Fade in>
+                       <p>{comment.comment}</p>
+                       <p>--{comment.author}, {new Intl.DateTimeFormat('en-US', {year:'numeric', month:'short', day:'2-digit'}).format(new Date(Date.parse(comment.date)))}</p>
+                       </Fade in>
+                                  </div>
+                   </Stagger>
+                                 )
             })
 
             return comments;
@@ -134,6 +139,10 @@ const minNameLength = (len) => (val) => (val) && (val.length > len)
         if(props)
         {
             return (
+                <FadeTransform in 
+                transformProps ={{
+                    exitTransform: 'sacle(0.5) translateY(-50%)'                
+                }}>
                     <Card>
                             <CardImg width="100%" src={baseUrl + props.image} alt={props.name} />
                             <CardTitle>
@@ -144,6 +153,7 @@ const minNameLength = (len) => (val) => (val) && (val.length > len)
                             </CardText>
 
                     </Card>
+               </FadeTransform>
             )
         }
         else
