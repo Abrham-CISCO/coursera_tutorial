@@ -6,7 +6,7 @@ import {Card, Breadcrumb, BreadcrumbItem, CardImg, CardText, CardTitle,
    import {Link} from 'react-router-dom';
 import FormFeedback from 'reactstrap/lib/FormFeedback';
 import { baseUrl } from '../shared/baseUrl';
-import {FadeTransform, Fade, Stagger} from 'react-animation-component
+import {FadeTransform, Fade, Stagger} from 'react-animation-components';
 const maxNameLength = (len) => (val) => !(val) || (val.length <= len)
 const minNameLength = (len) => (val) => (val) && (val.length > len)
 
@@ -120,7 +120,7 @@ const minNameLength = (len) => (val) => (val) && (val.length > len)
                         <Fade in>
                        <p>{comment.comment}</p>
                        <p>--{comment.author}, {new Intl.DateTimeFormat('en-US', {year:'numeric', month:'short', day:'2-digit'}).format(new Date(Date.parse(comment.date)))}</p>
-                       </Fade in>
+                       </Fade>
                                   </div>
                    </Stagger>
                                  )
