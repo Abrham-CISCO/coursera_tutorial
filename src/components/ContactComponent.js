@@ -31,8 +31,10 @@ class Contact extends Component{
     //     })
     // }   
     handleSubmit(values){
-        this.props.postContact(values.firstname, values.lastname, values.telnum, values.email, values.agree, values.contactType, values.message)
-        alert("Thank you for your feedback! " + JSON.stringify(values));
+        this.props.postFeedback(values.firstname, values.lastname, values.telnum, values.email, values.agree, values.contactType, values.message)
+        .then(response=>{
+            alert("Thank you for your feedback! " + JSON.stringify(response));
+        })
         this.props.resetFeedbackForm();
     } 
     render(){

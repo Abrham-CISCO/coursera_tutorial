@@ -183,7 +183,7 @@ export const addLeaders = (leaders) => ({
     payload: leaders
 });
 
-export const postContact = (firstname, lastname, telnum, email, agree, contactType, message) => (dispatch) => {
+export const postFeedback = (firstname, lastname, telnum, email, agree, contactType, message) => (dispatch) => {
     const newContact = {
        firstname:firstname,
        lastname: lastname,
@@ -193,7 +193,6 @@ export const postContact = (firstname, lastname, telnum, email, agree, contactTy
        contactType:contactType,
        message:message
     }
-    newContact.date = new Date().toISOString();
    
     return fetch(baseUrl + 'feedback', {
         method: 'POST',
@@ -216,7 +215,7 @@ export const postContact = (firstname, lastname, telnum, email, agree, contactTy
        var errmess = new Error(error.message);
        throw errmess;
    })
-   .then(response => response.json())
+   .then(response => {return(response.json())})
    .catch(error=> {console.log('Post contact ', error.message);
    alert('Your contact could not be posted \n Error: '+ error.message)})
    };
